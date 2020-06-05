@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <style>
+    div {
+      margin-bottom: 40px;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+  </style>
+  <div class="container">
+    <div class="codepen" data-height="300" data-theme-id="37855" data-default-tab="js,result" data-user="engleite" data-slug-hash="OJymPWr" data-prefill='{"title":"vue-teste","tags":[],"scripts":["https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.1.3/vue-router.min.js","https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js","https://cdnjs.cloudflare.com/ajax/libs/vuex/3.2.0/vuex.min.js"],"stylesheets":[]}' data-editable="true">
+      <pre data-lang="html">&lt;div id="app">
+      &lt;p>{{nome}}&lt;/p>
+      
+      &lt;p v-if="false">
+        ola
+      &lt;/p>
+    &lt;/div>
+    </pre>
+      <pre data-lang="js">    const vm = new Vue({
+          el: "#app",
+          data: {
+            nome:'Martelo'
+          }
+        });</pre></div>
+
+        <!-- Outro -->
+
+        <div class="codepen" data-height="300" data-theme-id="37855" data-default-tab="js,css,result" data-user="engleite" data-slug-hash="wvKJygz" data-prefill='{"title":"Iterar-objeto","tags":[],"html_classes":"editor","scripts":[],"stylesheets":["https://engleite.github.io/style.css"]}' data-editable="true">
+          <pre data-lang="html">&lt;div id="teste">&lt;p>Ola&lt;/p> &lt;/div>
+        </pre>
+          <pre data-lang="js">const obj = [{a:2,b:2}, {a:2,b:3}]
+        
+        let v = 0;
+        
+        const a = obj.map(item =>{
+         const b = Object.values(item);
+         return b[0]*b[1]
+        })
+        
+        const bi = "&lt;p>Ola de novo&lt;/p>"
+        
+        const ci = document.getElementById("teste")
+        
+        ci.innerHTML = JSON.stringify(obj);
+
+        ci.innerHTML = bi;
+      
+      </pre></div>
+        
+    <script async src="https://static.codepen.io/assets/embed/ei.js"></script>
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Libre+Franklin:ital,wght@0,900;1,500;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="./vue.js"></script>
+
+    <title>Marvin</title>
+  </head>
+  <body>
+    <div id="app">
+      <header class="header">
+        <div class="container">
+          <nav class="flex justify-between align-items-center">
+            <div>
+              <a href="/">
+                <img
+                  class="header__logo"
+                  src="./img/logo-header.svg"
+                  alt="logo Header"
+              /></a>
+            </div>
+            <div v-if="showInputHeader">
+              <input
+                value="bced951e3947b6a5f409e71eb5f0afc3"
+                class="header__input"
+                type="text"
+                placeholder="enter your key"
+              /><span class="header__input-key">key</span>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!--Finish Site header-->
+
+      <!-- Search -->
+      <section class="search">
+        <div class="search__container container">
+          <h1 class="search__title">find your character!</h1>
+          <form class="search__form">
+            <input
+              v-model="searchValue"
+              value="Wolverine"
+              class="search__input"
+              type="text"
+              placeholder="search"
+            />
+            <button
+              @click.prevent="fetchCharacter(searchValue)"
+              class="search__button"
+            >
+              GO
+            </button>
+          </form>
+        </div>
+      </section>
+      <!-- Finish Search -->
+
+      <!-- Character section -->
+      <section class="character__section character__information">
+        <div class="container character__section--alert">
+          <h2 class="character__title-information">
+            You have two options to search in this site:
+          </h2>
+          <p>
+            - By the first letter of the character's name;
+          </p>
+          <p>- By the character's name.</p>
+          <p>Find below an example using 'Wolverine'.</p>
+          <p class="character__enjoy-information">Enjoy it!</p>
+        </div>
+      </section>
+
+      <section v-if="count === 0" class="character__section">
+        <div class="container">
+          <p class="character__section--alert">
+            No results for your search...
+          </p>
+        </div>
+      </section>
+
+      <section v-if="total > 20" class="character__section">
+        <div class="container">
+          <p class="character__section--alert">
+            More of 20 ({{total}}) returned results. Can you be more specific em
+            your search? Try to search for a especific name...
+          </p>
+        </div>
+      </section>
+
+      <section v-if="charactersList.length > 0" class="character__section">
+        <div
+          @click="fetchComics(character.id, character.name, character.comics.available)"
+          v-for="character in charactersList"
+          class="character__sectionUnit container flex"
+        >
+          <div class="flex-item-5">
+            <img
+              class="character__image"
+              :src="character.thumbnail.path+'.'+character.thumbnail.extension"
+              alt=""
+            />
+          </div>
+          <div class="character__box">
+            <h1 class="character__name">
+              {{character.name}}
+            </h1>
+            <article
+              v-if="character.description.length > 0"
+              class="character__description"
+            >
+              {{character.description}}
+            </article>
+            <article v-else class="character__description--none">
+              There is no description for this character.
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Paginate -->
+      <div
+        v-if="showPaginate"
+        style="text-align: center; margin-bottom: 30px;"
+        class="container"
+      >
+        <button v-show="page > 0" @click="page--"><<</button>
+        <p style="display: inline-block;">{{page+1}} de {{numberPages+1}}</p>
+        <button v-show="page < numberPages" @click="page++">>></button>
+      </div>
+      <!-- Finish Paginate -->
+      <!-- Finish Character section -->
+
+      <!-- Comics section -->
+      <section v-if="showComics" class="comics__section">
+        <div class="comics__container">
+          <button class="comics__button-close" @click="closeModal">
+            X
+          </button>
+          <div class="modal" v-for="comic in comicsList">
+            <div class="flex-item-3">
+              <img
+                class="character__image"
+                :src="comic.thumbnail.path+'.'+comic.thumbnail.extension"
+                alt=""
+              />
+            </div>
+            <div>
+              <h2>{{comic.title}}</h2>
+              <article>
+                {{comic.description}}
+              </article>
+            </div>
+          </div>
+        </div>
+         
+      </section>
+      <!--Comics section -->
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="footer__box justify-between container flex">
+          <div class="footer__copyright">
+            <p>
+              <a href="http://marvel.com/">
+                Data provided by Marvel. © 2020 MARVEL</a
+              >
+            </p>
+          </div>
+          <img
+            class="footer__logo"
+            src="./img/logo-footer.svg"
+            alt="logo footer"
+          />
+          <p class="footer__autor">
+            <a href="http://www.emersonleite.dev"> By Emerson Leite</a>
+          </p>
+          <button @click="req++">+</button><button @click="req--">-</button
+          ><button @click="req=0">0</button>
+          <button @click="openModal">modal</button>
+        </div>
+        <p style="text-align: center;" class="footer__autor">
+          Requisições: {{req}} (limite de 3000/ dia)
+        </p>
+      </footer>
+      <!-- Finish Footer -->
+
+      <!-- DIALOG -->
+      <!-- DIALOG -->
+      <!-- DIALOG -->
+      <!-- DIALOG -->
+      <!-- DIALOG -->
+
+      <div
+        :class="{'modal-open':showModal, 'modal-show':showModal}"
+        class="modal"
+        id="modal1"
+      >
+        <!-- This is the background overlay -->
+        <div class="modal-content">
+          <!-- This is the actual modal/popup box -->
+          <button @click="showModal = false">xxX</button>
+          <span class="modal-close">&times;</span>
+          <h1>{{atualCharacter}}</h1>
+          <div
+            v-for="(comic, index) in comicsList"
+            :key="comic.id"
+          >
+            <div class="flex-item-3">
+              <img
+                class="character__image"
+                :src="comic.thumbnail.path+'.'+comic.thumbnail.extension"
+                alt=""
+              />
+            </div>
+            <div>
+              <h2>{{comic.title}}</h2>
+              <article>
+                {{comic.description}}
+              </article>
+            </div>
+            
+          </div>
+          <!-- Paginate Comics-->
+                <div
+                  v-if="showPaginateComics"
+                  style="text-align: center; margin-bottom: 30px;"
+                  class="container"
+                >
+                  <button v-show="pageComics  > 0" @click="pageComics --"><<</button>
+                  <p style="display: inline-block;">{{page+1}} de {{numberPagesComics +1}}</p>
+                  <button v-show="pageComics  < numberPagesComics " @click="pageComics ++">>></button>
+                </div>
+                <!-- Finish Paginate Comics -->
+        </div>
+      </div>
+    </div>
+    <script src="./app.js"></script>
+  </body>
+</html>

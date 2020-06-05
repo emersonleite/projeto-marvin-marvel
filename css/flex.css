@@ -1,0 +1,79 @@
+.flex {
+  display: flex;
+}
+
+.container {
+  max-width: 940px; /* máximo tamanho do container*/
+  margin: 0 auto;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.flex-row {
+  margin-right: -10px;
+  margin-left: -10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.flex-item-4,
+.flex-item-6,
+.flex-item-8,
+.flex-item-3,
+.flex-item-5,
+.flex-item-16 {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.flex-item-3 {
+  flex: 0 0 calc(18.75% - 20px);
+  max-width: calc(18.75% - 20px);
+}
+
+.flex-item-4 {
+  flex: 0 0 calc(25% - 20px);
+  max-width: calc(25% - 20px);
+}
+
+.flex-item-5 {
+  flex: 0 0 calc(31.25% - 20px);
+  max-width: calc(31.25% - 20px);
+}
+
+.flex-item-6 {
+  flex: 0 0 calc(37.5% - 20px);
+  max-width: calc(37.5% - 20px);
+}
+
+.flex-item-8 {
+  flex: 0 0 calc(50% - 20px);
+  max-width: calc(50% - 20px);
+}
+
+.flex-item-16 {
+  flex: 0 0 calc(100% - 20px);
+  max-width: calc(100% - 20px);
+}

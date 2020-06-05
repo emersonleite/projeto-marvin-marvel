@@ -1,0 +1,46 @@
+/* ----- Reset ----- */
+
+body,
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+div,
+section,
+article,
+input {
+  margin: 0px;
+  padding: 0px;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  /* color: #fff; */
+  color: currentColor;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ----- Fim de Reset ----- */

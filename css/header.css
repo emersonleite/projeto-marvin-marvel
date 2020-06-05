@@ -1,0 +1,35 @@
+.header {
+  background: #04005c;
+}
+
+nav {
+  justify-content: space-between;
+}
+
+.header__logo {
+  flex: 1;
+  height: 80px;
+  margin: 20px 0;
+}
+
+.header__input {
+  border-radius: 8px;
+  border: none;
+  font-size: 1.25rem;
+  height: 55px;
+  width: 380px;
+  padding-left: 20px;
+}
+
+.header__input::placeholder {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.25rem;
+}
+
+.header__input-key {
+  color: #ffffff;
+  font-family: "Pacifico", cursive;
+  font-size: 1.87rem;
+  margin-left: 10px;
+  margin-top: 7px;
+}
